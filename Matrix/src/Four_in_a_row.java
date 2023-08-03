@@ -4,7 +4,7 @@ public class Four_in_a_row {
 
 	static Scanner in=new Scanner(System.in);	
 	
-	//בודק אם יש שורה של 4 לרוחב
+	//checks if there is 4 in a row horizontally 
 	public static boolean fourRow(int mat[][], int player, int iplayed)
 	{
 		int i,count=0;
@@ -22,7 +22,7 @@ public class Four_in_a_row {
 			return false;
 		
 	}
-	//בודק אם יש שורה של 4 לאורך
+	//checks if there is 4 in a row vertically 
 	public static boolean fourColumn (int mat[][], int player, int iplayed, int jplayed)
 	{
 		int i, count=0;
@@ -43,7 +43,7 @@ public class Four_in_a_row {
 			return false;
 	}
 	
-	//בודק אם יש שורה של 4 באלכסון
+	//checks if there is 4 in a row diagonally 
 	public static boolean fourDiagonal(int mat[][], int player, int iplayed, int jplayed)
 	{
 		int i, newi, newj, count=0, cont=0;
@@ -151,15 +151,14 @@ public class Four_in_a_row {
 		{
 
 			found=0;
-			//מתחיל1 למצוא שורה במקום הכי נמוך
 			line=mat.length-1;
 			System.out.println("player "+player+" turn");
 			print(mat);
 			
-			//המשחק מכניס מספר עמודה שהוא רוצה למלות
+			//player puts in the number of the column he wants to fill
 			playCol=in.nextInt()-1;
 			
-			//מחפש מקום ריק הכי נמוך
+			//finds the lowest empty place
 			for (int i=0; i<mat.length && found!=1; i++)
 			{
 				if (mat[line-i][playCol]==0)
@@ -169,7 +168,7 @@ public class Four_in_a_row {
 					found=1;
 				}
 			}
-			//בדיקה עם המשתמש הצליח לעשות רצף של 4 בשורה
+			//chaecks if player did 4 in a row
 			if (fourRow(mat,player,rightLine)==true || fourColumn(mat,player,rightLine, playCol)==true || fourDiagonal(mat, player, rightLine, playCol)==true)
 			{
 				System.out.println("player="+player+"  line="+rightLine);
@@ -178,7 +177,7 @@ public class Four_in_a_row {
 			}
 
 			
-			//אחרת המשתמש מתחלף
+			//switching players
 			else
 			{
 				if (player==1)
